@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
+  h1= "Cari-bou to-do"
   p Welcome to #{title}
+  p #{JSON.stringify(todos)}
+  ul
+    each val in todos
+      li= val.title
+        a= val.description
