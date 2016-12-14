@@ -5,7 +5,7 @@ CREATE TABLE todos (
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   completed BOOLEAN DEFAULT false,
-  priority INTEGER DEFAULT 5
+  priority INTEGER DEFAULT 0
 );
 
 INSERT INTO todos (title,description,completed,priority) VALUES

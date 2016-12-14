@@ -30,7 +30,7 @@ function createTodo(title) {
     todos (title, description, completed, priority)
     VALUES
     ( $1, $2, $3, $4 )
-    RETURNING id`, [title, '', false, 5]
+    RETURNING id`, [title, '', false, 0]
   )
 }
 
@@ -41,8 +41,28 @@ function updateTodo( id, title, description ) {
    SET
     title=$2,
     description=$3
-   WHERE id=$1`, [id, title, description]
+   WHERE id=$1`, [ id, title, description ]
 )}
+
+function completeTodo( id, completed) {
+  return db.none(
+  `UPDATE
+    todos
+   SET
+    completed=$2
+   WHERE id=$1`, [ id, completed ]
+  )
+}
+
+function updatePriority( id, priority) {
+  return db.none(
+  `UPDATE
+    todos
+   SET
+    priority=$2
+   WHERE id=$1`, [ id, priority ]
+  )
+}
 
 function removeTodo( id ) {
   return db.none(
@@ -55,8 +75,9 @@ function removeTodo( id ) {
 
 module.exports = {
   getAllTodos,
-  getSingleTodo,
   createTodo,
   updateTodo,
-  removeTodo
+  removeTodo,
+  completeTodo,
+  updatePriority
 };
