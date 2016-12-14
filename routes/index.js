@@ -39,9 +39,9 @@ router.post('/todos/:id', (request, response) => {
 });
 
 // DELETE THE THINGS
-router.post('/todos/delete/:id', (request, response) => {
+router.post('/todos/delete/:id', ( request, response ) => {
   console.log(request.params.id)
-  db.removeTodo(request.params.id)
+  db.removeTodo( request.params.id )
   .then(todo => {
     response.redirect('/todos')
   })
@@ -50,5 +50,33 @@ router.post('/todos/delete/:id', (request, response) => {
   });
 });
 
+// COMPLETE THE THINGS
+
+router.post('/todos/completed/:id', ( request, response ) => {
+  const { completed } = request.body
+
+  db.completeTodo( request.params.id, completed)
+    .then( todo => {
+      console.log(todo)
+      response.redirect('/todos')
+    })
+    .catch( error => {
+      console.log(error);
+      response.json(error)
+    })
+});
+
+// PRIORITIZE THE things
+router.post('/todos/prioritize/:id', (request, response) => {
+  const { priority } = request.body
+
+  db.updatePriority(request.params.id, priority)
+    .then( todo => {
+      response.redirect('/todos')
+    })
+    .catch( error => {
+      response.send(error)
+    })
+});
 
 module.exports = router;

@@ -1,22 +1,38 @@
 extends layout
 
 block content
-  h1= "Cari-bou to-do"
   p Welcome to #{title}
-  p #{JSON.stringify(todos)}
+  h1= "Cari-bou to-do"
   form(method='POST' action='/todos')
     input#title(type='text', placeholder='Write the things here', name='title' )
-    button(type='submit') What todo
+    button(type='submit') What To-do Caribou?
   ul
     each val in todos
-      li= val.title
-        a= ' ' + val.description
+      li.todoitem= val.title
+        a=' ' + val.description
+
         form(method='POST' action=`/todos/${val.id}`)
           input(type='hidden' value=`${val.title}` name='title')
-          input#description(type='text', placeholder='Add notes here' name='description')
-          button(type='submit') edit notes
+          input(type='text', placeholder='Add notes here' name='description')
+          button(type='submit') Edit Notes
 
         form(method='POST' action=`/todos/delete/${val.id}`)
-          input(type="hidden" value=`${val.title}` name='title')
+          input(type='hidden' value=`${val.title}` name='title')
           input(type='hidden' value=` ${val.description}` name='description')
-          button(type='submit') delete
+          button(type='submit') Delete
+
+        input(type='checkbox' checked=val.completed name='completed' data-id=val.id)
+
+        .row
+          .col-lg-6
+            .form-group
+              label.control-label.requireField(for='propertyType')
+                | Prioritize It
+              .col-xs-12
+                select#propertyType.select.form-control.input-lg(form='addProperty', method='POST', action=`/todos/prioritize/${val.id}` name='priority')
+                  option(value='0' selected= true) -- Set Priority --
+                  option(value='1' selected= val.priority == 1 ) 1
+                  option(value='2' selected= val.priority == 2 ) 2
+                  option(value='3' selected= val.priority == 3 ) 3
+                  option(value='4' selected= val.priority == 4 ) 4
+                  option(value='5' selected= val.priority == 5 ) 5
