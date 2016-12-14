@@ -4,7 +4,19 @@ block content
   h1= "Cari-bou to-do"
   p Welcome to #{title}
   p #{JSON.stringify(todos)}
+  form(method='POST' action='/todos')
+    input#title(type='text', placeholder='Write the things here', name='title' )
+    button(type='submit') What todo
   ul
     each val in todos
       li= val.title
-        a= val.description
+        a= ' ' + val.description
+        form(method='POST' action=`/todos/${val.id}`)
+          input(type='hidden' value=`${val.title}` name='title')
+          input#description(type='text', placeholder='Add notes here' name='description')
+          button(type='submit') edit notes
+
+        form(method='POST' action=`/todos/delete/${val.id}`)
+          input(type="hidden" value=`${val.title}` name='title')
+          input(type='hidden' value=` ${val.description}` name='description')
+          button(type='submit') delete

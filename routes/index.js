@@ -6,24 +6,49 @@ var db = require('../queries');
 //router.get('/todos', db.getAllTodos);
 router.get('/todos', function(request, response) {
   db.getAllTodos()
-    .then(function(todos) {
+    .then( todos => {
       response.render('index', { todos })
     })
-    .catch(function(error) {
+    .catch( error => {
       response.render('error')
     })
 });
 
-router.post('/todos', db.createTodo);
-
-// CREATE THINGS
-router.put('todo/:id', function(request, response) {
-  db.updateTodo()
-    .then(function(todo) {
-      response.redirect('/todos', { todo })
+// CREATE THE THINGS
+router.post('/todos', (request, response) => {
+  db.createTodo(request.body.title)
+    .then( todos => {
+      response.redirect( 'todos' )
     })
+    .catch( error => {
+      response.render('error')
+    })
+});
+
+// UPDATE THE THINGS
+router.post('/todos/:id', (request, response) => {
+  const { title, description } = request.body
+
+  db.updateTodo(request.params.id, title, description)
+    .then( todo => {
+      response.redirect('/todos')
+    })
+    .catch( error => {
+      response.send(error)
+    })
+});
+
+// DELETE THE THINGS
+router.post('/todos/delete/:id', (request, response) => {
+  console.log(request.params.id)
+  db.removeTodo(request.params.id)
+  .then(todo => {
+    response.redirect('/todos')
+  })
+  .catch(error => {
+    response.send(error)
   });
-// router.delete('todo/:id', db.removeTodo);
+});
 
 
 module.exports = router;

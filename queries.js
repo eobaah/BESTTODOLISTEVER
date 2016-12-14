@@ -24,33 +24,39 @@ function getSingleTodo(request, response, next) {
 }
 
 
-function createTodo(request, response, next) {
-  // const create = {
-  //   todo: (title, description, complete) => {
-  //     db.one(
-  //     `INSERT INTO
-  //     todo (title, description, complete, priority)
-  //     VALUES
-  //     ( $1, $2, $3, $4 )
-  //     RETURNING id`, [title, description, complete]
-  //     )
-  // require.body.title
+function createTodo(title) {
+  return db.one(
+    `INSERT INTO
+    todos (title, description, completed, priority)
+    VALUES
+    ( $1, $2, $3, $4 )
+    RETURNING id`, [title, '', false, 5]
+  )
 }
 
-function updateTodo( id ) {
+function updateTodo( id, title, description ) {
   return db.any(
   `UPDATE
     todos
    SET
-    todos.title=$2,
+    title=$2,
     description=$3
-   WHERE id=$1`, [id]
+   WHERE id=$1`, [id, title, description]
 )}
+
+function removeTodo( id ) {
+  return db.none(
+    `DELETE FROM
+      todos
+     WHERE
+      id=$1`, [id]
+  )
+}
 
 module.exports = {
   getAllTodos,
   getSingleTodo,
   createTodo,
   updateTodo,
-  //removeTodo
+  removeTodo
 };
