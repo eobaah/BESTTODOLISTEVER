@@ -7,7 +7,11 @@ a {
   color: #00B7FF;
 }
 
+/* Strikethrough */
 .things {
+  text-decoration: line-through;
+}
+li[data-completed=true] {
   text-decoration: line-through;
 }
 
