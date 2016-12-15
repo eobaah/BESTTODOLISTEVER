@@ -12,7 +12,7 @@ var db = pgp(connectionString);
 // add query functions
 
 function getAllTodos(request, response, next) {
-  return db.many('select * from todos')
+  return db.many('select * from todos ')
 }
 
 function getSingleTodo(request, response, next) {
@@ -30,7 +30,7 @@ function createTodo(title) {
     todos (title, description, completed, priority)
     VALUES
     ( $1, $2, $3, $4 )
-    RETURNING id`, [title, '', false, 0]
+    RETURNING id`, [title, '', false, 5]
   )
 }
 
@@ -60,7 +60,8 @@ function updatePriority( id, priority) {
     todos
    SET
     priority=$2
-   WHERE id=$1`, [ id, priority ]
+   WHERE id=$1
+   `, [ id, priority ]
   )
 }
 
@@ -73,11 +74,22 @@ function removeTodo( id ) {
   )
 }
 
+function orderTodo( id ) {
+  return db.many(
+    `SELECT * FROM
+      todos
+     ORDER BY
+      priority
+     ASC`
+  )
+}
+
 module.exports = {
   getAllTodos,
   createTodo,
   updateTodo,
   removeTodo,
   completeTodo,
-  updatePriority
+  updatePriority,
+  orderTodo
 };
