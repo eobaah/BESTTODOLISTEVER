@@ -73,6 +73,7 @@ router.post('/todos/prioritize/:id', (request, response) => {
   db.updatePriority(request.params.id, priority)
     .then( todo => {
       response.redirect('/todos')
+    //  db.orderTodo()
     })
     .catch( error => {
       response.send(error)

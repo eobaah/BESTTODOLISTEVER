@@ -6,9 +6,9 @@ block content
   form(method='POST' action='/todos')
     input#title(type='text', placeholder='Write the things here', name='title' )
     button(type='submit') What To-do Caribou?
-  ul
+  ul.listItems
     each val in todos
-      li.todoitem= val.title
+      li(data-priority=`${val.priority}`)= val.title
         a=' ' + val.description
 
         form(method='POST' action=`/todos/${val.id}`)
@@ -26,10 +26,10 @@ block content
         .row
           .col-lg-6
             .form-group
-              label.control-label.requireField(for='propertyType')
+              label.control-label
                 | Prioritize It
               .col-xs-12
-                select#propertyType.select.form-control.input-lg(form='addProperty', method='POST', action=`/todos/prioritize/${val.id}` name='priority')
+                select.select.form-control.input-lg( method='POST', action=`/todos/prioritize/${val.id}` name='priority', data-id=val.id)
                   option(value='0' selected= true) -- Set Priority --
                   option(value='1' selected= val.priority == 1 ) 1
                   option(value='2' selected= val.priority == 2 ) 2
