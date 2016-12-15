@@ -9,7 +9,14 @@ $('[name=completed]').change(function() {
 
 $('[name=priority]').change(function() {
   console.log('going to make a post req', this, $(this).data('id'))
-  $.post(`/todos/prioritize/${$(this).data('id')}`, { priority: this.value }).load(`/todos`);
+  $.ajax({
+    type: "POST",
+    url: `/todos/prioritize/${$(this).data('id')}`,
+    data: { priority: this.value },
+    success: function() {
+      window.location.reload()
+    }
+  })
 })
 
 $('li').sort(sort_li).appendTo('.listItems');
