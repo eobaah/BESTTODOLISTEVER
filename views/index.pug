@@ -8,7 +8,7 @@ block content
     button(type='submit') What To-do Caribou?
   ul.listItems
     each val in todos
-      li(data-priority=`${val.priority}`)= val.title
+      li.todoitem(data-priority=`${val.priority}`, data-completed=`${val.completed}`)= val.title
         a=' ' + val.description
 
         form(method='POST' action=`/todos/${val.id}`)
