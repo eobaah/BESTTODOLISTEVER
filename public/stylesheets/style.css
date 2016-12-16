@@ -6,10 +6,12 @@ body {
   background-repeat: no-repeat;
   background-position: absolute;*/
 }
+
 .navbar {
   align-content: flex-start;
   position: fixed;
 }
+
 #it {
   background-color: rgba(0, 0, 0, .45)
   text-align: right;
@@ -17,7 +19,6 @@ body {
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
-
 }
 
 h1 {
@@ -28,6 +29,7 @@ h1 {
 .title {
   margin-top: -30px;
 }
+
 a {
   color: #00B7FF;
 }
@@ -37,7 +39,7 @@ a {
 }
 
 .intro {
-  margin: auto;
+  margin-left: 14%;
   width: 50%;
   text-align: center;
   text-shadow: rgba(140, 140, 140, 0.6) .5px .5px 0px, rgba(0, 0, 0, 0.670588) -1px -1px 1px;
@@ -101,7 +103,7 @@ background-color: rgba(224, 221, 0, 0.37)
 .listItems {
   background-color: rgba(255, 255, 255, .65);
   margin: auto;
-  width: 50%;
+  width: 45%;
   list-style: none;
   text-align: center;
   text-shadow: rgba(140, 140, 140, 0.6) .5px .5px 0px, rgba(0, 0, 0, 0.670588) -1px -1px 1px;
