@@ -1,38 +1,43 @@
 extends layout
 
 block content
-  p Welcome to #{title}
-  h1= "Cari-bou to-do"
-  form(method='POST' action='/todos')
-    input#title(type='text', placeholder='Write the things here', name='title' )
-    button(type='submit') What To-do Caribou?
-  ul.listItems
+  div(classname="video-banner")
+  div(classname="video-banner-background")
+    video#bgvid(autoplay="", loop="", muted="", poster="")
+      source(src="../images/caribou.mp4", type="video/mp4")
+
+
+  div.listItems
     each val in todos
-      li.todoitem(data-priority=`${val.priority}`, data-completed=`${val.completed}`)= val.title
-        a=' ' + val.description
 
-        form(method='POST' action=`/todos/${val.id}`)
-          input(type='hidden' value=`${val.title}` name='title')
-          input(type='text', placeholder='Add notes here' name='description')
-          button(type='submit') Edit Notes
+      div.todoBox
+        li.todoitem(data-priority=`${val.priority}`, data-completed=`${val.completed}`)= val.title
+          p.description= " " + val.description
+          hr
+          form(method='POST' action=`/todos/${val.id}`)
+            input(type='hidden' value=`${val.title}` name='title')
+            input(type='text', placeholder='Add notes here' name='description')
+            button(type='submit') Edit Notes
 
-        form(method='POST' action=`/todos/delete/${val.id}`)
-          input(type='hidden' value=`${val.title}` name='title')
-          input(type='hidden' value=` ${val.description}` name='description')
-          button(type='submit') Delete
+          form(method='POST' action=`/todos/delete/${val.id}`)
+            input(type='hidden' value=`${val.title}` name='title')
+            input(type='hidden' value=` ${val.description}` name='description')
+            button(type='submit') Delete
 
-        input(type='checkbox' checked=val.completed name='completed' data-id=val.id)
+          div#cherkBerx
+            p= "Complete?   "
+              input(type='checkbox' checked=val.completed name='completed' data-id=val.id)
 
-        .row
-          .col-lg-6
-            .form-group
-              label.control-label
-                | Prioritize It
-              .col-xs-12
-                select.select.form-control.input-lg( method='POST', action=`/todos/prioritize/${val.id}` name='priority', data-id=val.id)
-                  option(value='0' selected= true) -- Set Priority --
-                  option(value='1' selected= val.priority == 1 ) 1
-                  option(value='2' selected= val.priority == 2 ) 2
-                  option(value='3' selected= val.priority == 3 ) 3
-                  option(value='4' selected= val.priority == 4 ) 4
-                  option(value='5' selected= val.priority == 5 ) 5
+          .row
+            .col-lg-6
+              .form-group
+                label.control-label
+                .col-xs-12
+                  select.select.form-control.input-lg( method='POST', action=`/todos/prioritize/${val.id}` name='priority', data-id=val.id)
+                    option(value='0' selected= true) -- Set Priority --
+                    option.priority1(value='1' selected= val.priority == 1 ) Priority 1
+                    option.priority2(value='2' selected= val.priority == 2 ) Priority 2
+                    option.priority3(value='3' selected= val.priority == 3 ) Priority 3
+                    option.priority4(value='4' selected= val.priority == 4 ) Priority 4
+                    option.priority5(value='5' selected= val.priority == 5 ) Priority 5
+          hr

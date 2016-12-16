@@ -3,6 +3,16 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    nav.navbar.navbar-fixed-top
+      .container-fluid
+        .intro
+          p Welcome to
+          .title
+            h1= "Caribou To-Do"
+          div
+            form#it.poop(method='POST' action='/todos')
+              input#title(type='text', placeholder='Write the things here', name='title' )
+              button#addButton.btn(type='submit') What To-do Caribou?
 
   body
     block content

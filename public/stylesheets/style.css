@@ -1,62 +1,132 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-image: url('../images/Caribous.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: absolute;*/
+}
+
+.navbar {
+  align-content: flex-start;
+  position: fixed;
+}
+
+#it {
+  background-color: rgba(0, 0, 0, .45)
+  text-align: right;
+  display: flex
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  font-size: 50px;
+}
+
+.title {
+  margin-top: -30px;
 }
 
 a {
   color: #00B7FF;
 }
 
+.poop {
+  margin-left: -127px;
+}
+
+.intro {
+  margin-left: 14%;
+  width: 50%;
+  text-align: center;
+  text-shadow: rgba(140, 140, 140, 0.6) .5px .5px 0px, rgba(0, 0, 0, 0.670588) -1px -1px 1px;
+}
+
+#title {
+ height: 50px;
+ text-emphasis: 1px;
+ font-size: 25px;
+}
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+#cherkBerx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addButton {
+  position: absolute;
+  height: 56.5px;
+}
+
 /* Strikethrough */
 .things {
   text-decoration: line-through;
 }
+
 li[data-completed=true] {
   text-decoration: line-through;
 }
 
-/* Dropdown Button */
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+.todoitem[data-priority= '1']{
+background-color: rgba(255, 0, 0, .35)
 }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
+.todoitem[data-priority= '2']{
+background-color: rgba(235, 106, 0, 0.37)
 }
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+.todoitem[data-priority= '3']{
+background-color: rgba(224, 221, 0, 0.37)
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+.todoitem[data-priority= '4']{
+  background-color: rgba(153, 224, 0, 0.37)
+
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.todoitem[data-priority= '5']{
+  background-color: rgba(4, 117, 0, 0.39)
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
+}
+.description {
+  color: blue;
+  font-size: 20px;
+}
+.listItems {
+  background-color: rgba(255, 255, 255, .65);
+  margin: auto;
+  width: 45%;
+  list-style: none;
+  text-align: center;
+  text-shadow: rgba(140, 140, 140, 0.6) .5px .5px 0px, rgba(0, 0, 0, 0.670588) -1px -1px 1px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+.todoitem {
+  font-size: 25px;
+  margin: auto;
+  padding-top: 25px;
+  border: 1px solid black;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
 }
