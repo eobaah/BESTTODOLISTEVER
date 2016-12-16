@@ -6,9 +6,34 @@ body {
   background-repeat: no-repeat;
   background-position: absolute;*/
 }
+.navbar {
+  align-content: flex-start;
+  position: fixed;
+}
+#it {
+  background-color: rgba(0, 0, 0, .45)
+  text-align: right;
+  display: flex
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 
+}
+
+h1 {
+  color: white;
+  font-size: 50px;
+}
+
+.title {
+  margin-top: -30px;
+}
 a {
   color: #00B7FF;
+}
+
+.poop {
+  margin-left: -127px;
 }
 
 .intro {
@@ -39,14 +64,6 @@ input[type=checkbox] {
   height: 56.5px;
 }
 
-#addTodo {
-  display: flex;
-  margin: 15px 15px 15px 550px;
-  height: 55px;
-  text-align: center;
-  align-self: center;
-}
-
 /* Strikethrough */
 .things {
   text-decoration: line-through;
@@ -56,6 +73,27 @@ li[data-completed=true] {
   text-decoration: line-through;
 }
 
+.todoitem[data-priority= '1']{
+background-color: rgba(255, 0, 0, .35)
+}
+
+.todoitem[data-priority= '2']{
+background-color: rgba(235, 106, 0, 0.37)
+}
+
+.todoitem[data-priority= '3']{
+background-color: rgba(224, 221, 0, 0.37)
+}
+
+.todoitem[data-priority= '4']{
+  background-color: rgba(153, 224, 0, 0.37)
+
+}
+
+.todoitem[data-priority= '5']{
+  background-color: rgba(4, 117, 0, 0.39)
+
+}
 .description {
   color: blue;
   font-size: 20px;
