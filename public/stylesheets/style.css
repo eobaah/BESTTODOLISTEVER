@@ -21,7 +21,7 @@ body {
   display: flex
   justify-content: space-around;
   flex-direction: column;
-  /*align-items: center;*/
+  align-items: center;
 }
 
 h1 {
@@ -38,11 +38,9 @@ a {
 }
 
 .intro {
-  margin-left: 14%;
+  margin-left: 17%;
   width: 50%;
   font-size: 25px;
-  /*text-align: center;*/
-  /*text-shadow: rgba(140, 140, 140, 0.6) .5px .5px 0px, rgba(0, 0, 0, 0.670588) 5px 5px 3px;*/
 }
 
 #title {
@@ -102,7 +100,7 @@ background-color: rgba(224, 221, 0, 0.37)
 }
 .listItems {
   background-color: rgba(255, 255, 255, .65);
-  margin: auto;
+  margin-left: 500px;
   width: 45%;
   list-style: none;
   text-align: center;
