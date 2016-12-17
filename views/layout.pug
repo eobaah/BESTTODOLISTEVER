@@ -3,18 +3,21 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    nav.navbar.navbar-fixed-top
-      .container-fluid
-        .intro
-          p Welcome to
-          .title
-            h1= "Caribou To-Do"
-          div
-            form#it.poop(method='POST' action='/todos')
-              input#title(type='text', placeholder='Write the things here', name='title' )
-              button#addButton.btn(type='submit') What To-do Caribou?
+    link(href='//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bower_components/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css', rel='stylesheet')
+    nav#mainNavbar.navbar.navbar-default.navbar-fixed-top.bg-faded
+      .intro
+        p Welcome to
+        .title
+          h1= "Caribou To-Do"
+        div
+          form#it.poop(method='POST' action='/todos')
+            input#title(type='text', placeholder='Write the things here', name='title' )
+            button#addButton.btn.btn-success(type='submit') What To-do Caribou?
 
   body
     block content
     script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
     script(src="/javascripts/frontEnd.js")
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js')
+    script(src='/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js')

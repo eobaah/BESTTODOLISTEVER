@@ -16,9 +16,10 @@ router.get('/todos', function(request, response) {
 
 // CREATE THE THINGS
 router.post('/todos', (request, response) => {
+  console.log('request', request.body.title );
   db.createTodo(request.body.title)
     .then( todos => {
-      response.redirect( 'todos' )
+      response.redirect( '/todos' )
     })
     .catch( error => {
       response.render('error')
@@ -73,11 +74,22 @@ router.post('/todos/prioritize/:id', (request, response) => {
   db.updatePriority(request.params.id, priority)
     .then( todo => {
       response.redirect('/todos')
-    //  db.orderTodo()
     })
     .catch( error => {
       response.send(error)
     })
+
 });
+router.post('/todos/title/:id', (request, response) => {
+  const { title } = request.body
+  db.updateTitle(request.params.id, title)
+  .then( todo => {
+    response.redirect('/todos')
+  })
+  .catch( error => {
+    response.send(error)
+  })
+});
+
 
 module.exports = router;

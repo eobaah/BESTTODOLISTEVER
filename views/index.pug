@@ -6,13 +6,12 @@ block content
     video#bgvid(autoplay="", loop="", muted="", poster="")
       source(src="../images/caribou.mp4", type="video/mp4")
 
-
   div.listItems
     each val in todos
-
       div.todoBox
-        li.todoitem(data-priority=`${val.priority}`, data-completed=`${val.completed}`)= val.title
-          p.description= " " + val.description
+        li.todoitem(id=`todo-${val.id}`, data-priority=`${val.priority}`, data-completed=`${val.completed}`,)
+          a.poo.todoTitle.editable-click.edit(onclick=`window.updateTitle('${val.title}')`)= val.title
+          a.description.editable-click.edit= " " + val.description
           hr
           form(method='POST' action=`/todos/${val.id}`)
             input(type='hidden' value=`${val.title}` name='title')
@@ -33,7 +32,7 @@ block content
               .form-group
                 label.control-label
                 .col-xs-12
-                  select.select.form-control.input-lg( method='POST', action=`/todos/prioritize/${val.id}` name='priority', data-id=val.id)
+                  select.select.form-control.input-lg( method='POST', action=`/todos/${val.id}` name='priority', data-id=val.id)
                     option(value='0' selected= true) -- Set Priority --
                     option.priority1(value='1' selected= val.priority == 1 ) Priority 1
                     option.priority2(value='2' selected= val.priority == 2 ) Priority 2

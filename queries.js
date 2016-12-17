@@ -65,6 +65,17 @@ function updatePriority( id, priority) {
   )
 }
 
+function updateTitle( id, title) {
+  return db.none(
+  `UPDATE
+    todos
+   SET
+    title=$2
+   WHERE id=$1
+   `, [ id, title ]
+  )
+}
+
 function removeTodo( id ) {
   return db.none(
     `DELETE FROM
